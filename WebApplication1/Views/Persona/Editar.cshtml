@@ -1,0 +1,17 @@
+﻿<form method="post" action="/persona/actualizar">
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Example label</label>
+      <input type="text"  readonly name="name" class="form-control" id="formGroupExampleInput" value="@Model.name">
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Another label</label>
+      <input type="text" name="lastname" class="form-control" id="formGroupExampleInput2" value="@Model.lastname">
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Another label</label>
+      <input type="text"  name="email" class="form-control" id="formGroupExampleInput2" value="@Model.email">
+    </div>
+     <div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+     </div>
+</form>

@@ -5,7 +5,7 @@ namespace WebApplication1.Controllers
 {
     public class PersonaController : Controller
     {
-        public List<User> Usuarios = new List<User>()
+        private static List<User> Usuarios = new List<User>()
         {
             new User{name="Luis" , lastname="Perez", email="lPerez@gmail.com"},
             new User{name="Carlos", lastname="Huaman" ,email="lPerez@gmail.com"},
@@ -27,11 +27,60 @@ namespace WebApplication1.Controllers
         }
 
 
-        public string Guardar(string name, string lastname)
+
+        //En lugar de gurdar parametros individuales, encapsulamos
+        public IActionResult Guardar(User user)
         {
+            Usuarios.Add(user);
             //Guardar en la base de datos
-            return name +" "+ lastname+ "Persona Guardada";
+            return RedirectToAction("Index");
         }
+
+        //  persona/detalle?=name={$name}
+        public IActionResult Detalle(string name)
+        {
+            var user= Usuarios.First(o =>o.name==name);
+            return View(user);
+        }
+        public IActionResult Delete(string name)
+        {
+            var user = Usuarios.First(o => o.name == name);
+            Usuarios.Remove(user);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Editar(string name)
+        {
+            var user = Usuarios.First(o => o.name == name);
+            return View(user);
+
+        }
+
+        public IActionResult Actualizar(User user)
+        {
+            var model = Usuarios.First(o => o.name == user.name);
+            model.email = user.email;
+            model.lastname = user.lastname;
+            return RedirectToAction("Index");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public IActionResult form()
         {
             string name = "Luis";

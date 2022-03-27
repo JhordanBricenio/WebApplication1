@@ -13,6 +13,11 @@
                 <td>@item.name</td>
                 <td>@item.lastname</td>
                 <td>@item.email</td>
+                <td>
+                    <a href="persona/detalle?name=@item.name">Detalle</a>
+                    <a href="persona/editar?name=@item.name">Editar</a>
+                    <a href="persona/delete?name=@item.name">Eliminar</a>
+                </td>
             </tr>
         }
     </tbody>
