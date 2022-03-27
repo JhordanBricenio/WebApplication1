@@ -7,17 +7,30 @@ namespace WebApplication1.Controllers
     {
         public List<User> Usuarios = new List<User>()
         {
-            new User{name="Luis" , lastname="Perez"},
-            new User{name="Carlos", lastname="Huaman" },
-            new User{name="Luis" , lastname="Santoss"},
-            new User{name="Pedro" , lastname="laiza"},
-            new User{name="Dany" , lastname="Perez"},
-            new User{name="Karla" , lastname="Rodrigeus "}
+            new User{name="Luis" , lastname="Perez", email="lPerez@gmail.com"},
+            new User{name="Carlos", lastname="Huaman" ,email="lPerez@gmail.com"},
+            new User{name="Luis" , lastname="Santoss",email="lPerez@gmail.com"},
+            new User{name="Pedro" , lastname="laiza",email="laiza@gmail.com"},
+            new User{name="Dany" , lastname="Perez",email="lPerevargas@gmail.com"},
+            new User{name="Karla" , lastname="Rodrigeus ",email="jperse233@gmail.com"}
         };
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
 
         public IActionResult Index()
         {
             return View("Index",Usuarios);
+        }
+
+
+        public string Guardar(string name, string lastname)
+        {
+            //Guardar en la base de datos
+            return name +" "+ lastname+ "Persona Guardada";
         }
         public IActionResult form()
         {
@@ -34,11 +47,6 @@ namespace WebApplication1.Controllers
 
 
             //Tercera Forma(Model-> Argumento) -un solo parametro
-
-
-
-
-
             return View();
         }
     }

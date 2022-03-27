@@ -1,13 +1,18 @@
-﻿<table class="table table-striped">
+﻿
+<a class="alert" href="/persona/create">Crear persona</a>
+
+<table class="table table-striped">
     <tr>
         <th>Name</th>
         <th>Lastname</th>
+        <th>Email</th>
     </tr>
     <tbody>
         @foreach(var item in Model){
             <tr>
                 <td>@item.name</td>
                 <td>@item.lastname</td>
+                <td>@item.email</td>
             </tr>
         }
     </tbody>
