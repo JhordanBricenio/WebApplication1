@@ -3,13 +3,15 @@
 
 <table class="table table-striped">
     <tr>
+        <th>Codigo</th>
         <th>Name</th>
         <th>Lastname</th>
         <th>Email</th>
     </tr>
     <tbody>
-        @foreach(var item in Model){
+        @foreach(User item in ViewBag.lista){
             <tr>
+                <td>@item.id</td>
                 <td>@item.name</td>
                 <td>@item.lastname</td>
                 <td>@item.email</td>

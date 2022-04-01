@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Data;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
     public class PersonaController : Controller
     {
+        Conexion ctx;
+        public PersonaController(Conexion _context)
+        {
+            ctx = _context;
+        }
+        
         private static List<User> Usuarios = new List<User>()
         {
             new User{name="Luis" , lastname="Perez", email="lPerez@gmail.com"},
@@ -23,7 +30,8 @@ namespace WebApplication1.Controllers
 
         public IActionResult Index()
         {
-            return View("Index",Usuarios);
+            ViewBag.lista = ctx.Usuario.ToList();
+            return View();
         }
 
 
@@ -31,7 +39,8 @@ namespace WebApplication1.Controllers
         //En lugar de gurdar parametros individuales, encapsulamos
         public IActionResult Guardar(User user)
         {
-            Usuarios.Add(user);
+            ctx.Usuario.Add(user);
+            //Usuarios.Add(user);
             //Guardar en la base de datos
             return RedirectToAction("Index");
         }
